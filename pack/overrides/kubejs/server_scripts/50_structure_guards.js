@@ -17,14 +17,21 @@ global.za.guardAt = function (level, pos, day) {
   pd.putString('zaGuardKeys', keys.join(';'))
 
   const n = 2 + Math.floor(Math.random() * 3)
-  const Types = Java.loadClass('net.minecraft.world.level.levelgen.Heightmap$Types')
   const server = level.server
   for (let i = 0; i < n; i++) {
     const a = Math.random() * 6.283185307179586
     const d = 2 + Math.random() * 2
     const x = Math.floor(pos.x + Math.cos(a) * d) + 0.5
     const z = Math.floor(pos.z + Math.sin(a) * d) + 0.5
-    const y = level.getHeight(Types.MOTION_BLOCKING, Math.floor(x), Math.floor(z))
+    // Peti bisa di bawah tanah: pakai ketinggian peti, cari satu blok udara.
+    let y = pos.y
+    const bx = Math.floor(x)
+    const bz = Math.floor(z)
+    if (!Number(server.runCommandSilent('execute if block ' + bx + ' ' + y + ' ' + bz + ' minecraft:air'))) {
+      if (Number(server.runCommandSilent('execute if block ' + bx + ' ' + (y + 1) + ' ' + bz + ' minecraft:air'))) {
+        y = y + 1
+      }
+    }
     server.runCommandSilent(
       'summon minecraft:zombie ' + x + ' ' + y + ' ' + z +
       ' {Tags:["za_guard"],PersistenceRequired:1b}'

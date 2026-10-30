@@ -31,6 +31,14 @@ ServerEvents.commandRegistry(event => {
         )
       )
       .then(
+        Commands.literal('spawnRule').then(
+          Commands.argument('id', Arguments.RESOURCE_LOCATION.create(event)).executes(ctx => {
+            const id = String(Arguments.RESOURCE_LOCATION.getResult(ctx, 'id'))
+            return out(ctx, global.za.shouldCancelSpawn(id) ? 'cancel' : 'allow')
+          })
+        )
+      )
+      .then(
         Commands.literal('addDays').then(
           Commands.argument('n', Arguments.INTEGER.create(event)).executes(ctx => {
             const n = Arguments.INTEGER.getResult(ctx, 'n')

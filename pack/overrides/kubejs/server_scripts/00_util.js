@@ -27,6 +27,15 @@ global.za = {
 
   allowedSpawns: ['minecraft:zombie', 'minecraft:husk', 'minecraft:drowned', 'minecraft:zombie_villager'],
 
+  hostileSpawns: [
+    'minecraft:creeper', 'minecraft:skeleton', 'minecraft:stray', 'minecraft:spider', 'minecraft:cave_spider',
+    'minecraft:witch', 'minecraft:pillager', 'minecraft:vindicator', 'minecraft:evoker', 'minecraft:illusioner',
+    'minecraft:ravager', 'minecraft:phantom', 'minecraft:slime', 'minecraft:magma_cube', 'minecraft:silverfish',
+    'minecraft:endermite', 'minecraft:guardian', 'minecraft:elder_guardian', 'minecraft:ghast', 'minecraft:blaze',
+    'minecraft:wither_skeleton', 'minecraft:zombified_piglin', 'minecraft:hoglin', 'minecraft:zoglin',
+    'minecraft:enderman', 'minecraft:shulker', 'minecraft:vex', 'minecraft:warden'
+  ],
+
   dayTicks(level) {
     return level.getDayTime() / 1
   },
@@ -59,5 +68,11 @@ global.za = {
 
   canSpawnType(type) {
     return global.za.allowedSpawns.indexOf(String(type)) !== -1
+  },
+
+  shouldCancelSpawn(type) {
+    const id = String(type)
+    if (global.za.canSpawnType(id)) return false
+    return global.za.hostileSpawns.indexOf(id) !== -1
   },
 }

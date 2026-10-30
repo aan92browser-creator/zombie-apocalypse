@@ -8,18 +8,19 @@ global.za.hordeAlive = function (level) {
 global.za.startHorde = function (level, hordeIndex) {
   const server = level.server
   const day = global.za.day(level)
+  server.runCommandSilent('kill @e[tag=za_horde]')
   server.persistentData.putInt('zaHordeDay', day)
   server.persistentData.putInt('zaHordeIndex', hordeIndex)
   server.persistentData.putInt('zaWave', 0)
+  server.persistentData.putInt('zaHordeSpawned', 0)
   server.runCommandSilent('tellraw @a {"text":"Horde dimulai! Index ' + hordeIndex + ', hari ' + day + '","color":"red"}')
 }
 
 global.za.spawnWave = function (level, waveIndex, hordeIndex) {
   const server = level.server
   const want = global.za.waveSize(hordeIndex)
-  const alive = global.za.hordeAlive(level)
-  const room = global.za.cfg.waveCap - alive
-  const count = Math.min(want, room)
+  const room = global.za.cfg.waveCap - server.persistentData.getInt('zaHordeSpawned')
+  const count = Math.max(0, Math.min(want, room))
   const players = level.players
   const psize = players.size ? players.size() : players.length
   let cx = 0
@@ -42,6 +43,7 @@ global.za.spawnWave = function (level, waveIndex, hordeIndex) {
     const y = level.getHeight(Types.MOTION_BLOCKING, Math.floor(x), Math.floor(z))
     server.runCommandSilent('summon minecraft:zombie ' + x + ' ' + y + ' ' + z + ' {Tags:["za_horde"],PersistenceRequired:1b}')
   }
+  server.persistentData.putInt('zaHordeSpawned', server.persistentData.getInt('zaHordeSpawned') + count)
   server.runCommandSilent('tellraw @a {"text":"Gelombang ' + (waveIndex + 1) + '!","color":"yellow"}')
   return count
 }
@@ -52,6 +54,7 @@ global.za.endHorde = function (level) {
   server.persistentData.putInt('zaHordeDay', 0)
   server.persistentData.putInt('zaHordeIndex', 0)
   server.persistentData.putInt('zaWave', 0)
+  server.persistentData.putInt('zaHordeSpawned', 0)
   server.runCommandSilent('tellraw @a {"text":"Horde berakhir.","color":"green"}')
 }
 

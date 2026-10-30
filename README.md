@@ -90,6 +90,8 @@ Quest & pesan dalam bahasa Indonesia. Nether dan End dikunci.
 ## 8. Build ulang pack
 
 ```
+powershell -File tools/fetch_mods.ps1            # unduh/cek pakai lock pinned + verifikasi sha1
+powershell -File tools/fetch_mods.ps1 -Update    # resolve ulang versi dari Modrinth lalu tulis lock
 powershell -File tools/build_mrpack.ps1 -DryRun   # cek lock + overrides + hash jar
 powershell -File tools/build_mrpack.ps1           # hasil: dist/ZombieApocalypse-1.0.0.mrpack
 ```

@@ -13,6 +13,7 @@ global.za.kitEntries = function () {
     { id: 'minecraft:cooked_beef', count: 8, nbt: '' },
     { id: 'minecraft:potion', count: 4, nbt: '{Potion:"minecraft:water",Purity:3}' },
     { id: 'minecraft:torch', count: 8, nbt: '' },
+    { id: 'ftbquests:book', count: 1, nbt: '' },
   ]
 }
 

@@ -15,7 +15,8 @@ $want = @(
     '64x tacz:ammo',
     '8x minecraft:cooked_beef',
     '4x minecraft:potion',
-    '8x minecraft:torch'
+    '8x minecraft:torch',
+    '1x ftbquests:book'
 )
 
 $out = Cmd 'zombieapoc kitPreview'
@@ -39,4 +40,4 @@ if ($fail -gt 0) {
     "FAIL: $fail check(s)"
     exit 1
 }
-"ok: task6 kitPreview 9 stacks"
+"ok: task6 kitPreview 10 stacks"

@@ -1,12 +1,9 @@
 // Kontrol spawn (hanya keluarga zombie), kunci Nether/End.
+// `event.type` adalah MobSpawnType (NATURAL/SPAWNER/...), bukan id entity, jadi
+// id selalu dibaca dari entity. Hewan pasif dibiarkan (wol untuk armor, makanan).
 
 EntityEvents.checkSpawn(event => {
-  let type = null
-  try {
-    if (event.type != null) type = String(event.type)
-  } catch (e) {}
-  if (type == null) type = String(event.entity.type)
-  if (!global.za.canSpawnType(type)) {
+  if (global.za.shouldCancelSpawn(event.entity.type)) {
     event.cancel()
   }
 })

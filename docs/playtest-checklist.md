@@ -9,9 +9,10 @@ Keterangan: `[x]` = terverifikasi di server uji (bukti command RCON), `[ ]` = ha
 | # | Yang diamati | Status | Bukti / cara cek |
 |---|---|---|---|
 | A1 | Dunia baru seluruhnya bersalju/dingin, tanpa desa | [ ] | Buat dunia baru, terbang 500 blok; cek tidak ada village |
-| A2 | Starter kit muncul **sekali** saat spawn pertama | [ ] | Spawn pertama: 4 armor insulated, glock_17 + 64 ammo 9mm, 8 steak, 4 air, 8 obor; relog tidak memberi ulang |
-| A3 | Kit berisi item yang benar | [x] | `zombieapoc kitPreview` → 9 baris sesuai daftar di atas |
-| A4 | Hanya zombie family yang spawn alami | [x] | `zombieapoc canSpawn minecraft:zombie` true; `creeper`/`skeleton` false |
+| A2 | Starter kit muncul **sekali** saat spawn pertama | [ ] | Spawn pertama: 4 armor insulated, glock_17 + 64 ammo 9mm, 8 steak, 4 air, 8 obor, 1 buku quest; relog tidak memberi ulang |
+| A3 | Kit berisi item yang benar | [x] | `zombieapoc kitPreview` → 10 baris sesuai daftar di atas |
+| A4 | Hanya zombie family yang spawn alami | [x] | `zombieapoc spawnRule minecraft:zombie` → allow; `creeper`/`skeleton`/`spider` → cancel |
+| A5 | Hewan pasif tetap spawn alami (sumber wol/makanan) | [x] | `spawnRule minecraft:sheep` / `minecraft:cow` → allow |
 
 ## B. Suhu & kehausan
 
@@ -52,7 +53,7 @@ Keterangan: `[x]` = terverifikasi di server uji (bukti command RCON), `[ ]` = ha
 | # | Yang diamati | Status | Bukti / cara cek |
 |---|---|---|---|
 | E1 | Reruntuhan tersebar, sebagian peti dijaga zombie | [ ] | Jelajah; buka peti reruntuhan |
-| E2 | Guard hanya muncul sekali per peti | [x] | `zombieapoc guardTest x y z` → `guarded 2..4`, ulang → `already guarded` (Task 9) |
+| E2 | Guard hanya muncul sekali per peti | [x] | `zombieapoc guardTest x y z` → `guarded 2..4`, ulang → `already guarded` (Task 9); guard spawn di ketinggian peti, bukan permukaan (uji peti y=-30 → guard y=-30) |
 | E3 | 4 resep armor insulated bisa dikerjakan | [x] | `recipeCheck kubejs:insulated_leather_*` → true |
 | E4 | Amunisi 9mm, air bersih, backpack bisa dikerjakan | [x] | `recipeCheck kubejs:ammo_basic|water_bottle|backpack` → true |
 | E5 | Resep benar-benar bisa di-craft di grid 2×2/3×3 | [ ] | Klien: coba craft di crafting table |
@@ -67,6 +68,7 @@ Keterangan: `[x]` = terverifikasi di server uji (bukti command RCON), `[ ]` = ha
 | F4 | F3 menunjukkan render 8 / simulasi 8 | [ ] | Klien: F3 kiri atas |
 | F5 | Efek darah muncul saat kena hit dan memudar | [ ] | Klien: biarkan zombie memukul |
 | F6 | Backpack bisa dipakai | [ ] | Klien: klik kanan backpack |
+| F7 | Item armor insulated memakai tekstur leather vanilla | [x] | 4 model `kubejs:insulated_leather_*` → `minecraft:item/leather_*` |
 
 ## G. Performa (diukur)
 
@@ -94,5 +96,8 @@ Thirst `thirstDepletionModifier 1.0`; Zombie Awareness `maxPFRangeSense 64`, `wa
 ## I. Temuan saat uji
 
 - **Diperbaiki:** horde bisa ter-restart tepat setelah fajar (tod 23000–24000) karena syarat mulai hanya `tod ≥ 13000`; sekarang dibatasi `tod < hordeEndTick`. Bukti: C6 idle.
+- **Diperbaiki (review):** filter spawn memakai `event.entity.type` (bukan `getType()` yang mengembalikan `MobSpawnType`), jadi creeper/skeleton/spider benar-benar batal dan hewan pasif lolos (A4/A5).
+- **Diperbaiki (review):** cap horde memakai penghitung spawn (`zaHordeSpawned`) + bersihkan sisa horde saat mulai, sehingga tidak ada pengganti setelah zombie dibunuh (C2).
+- **Diperbaiki (review):** guard spawn di ketinggian peti (E2), kit menyertakan buku quest (A2/A3), model armor insulated memakai tekstur leather vanilla (F7), `fetch_mods.ps1` default pinned + `-Update` (tidak lagi menimpa lock tanpa diminta).
 - Sisa zombie horde dari sesi uji sebelumnya (69 entitas) menunjukkan `/kill` di `endHorde` tidak menjangkau entitas di chunk yang tidak termuat; setelah perbaikan restart, tidak ada penumpukan baru. Pantau di klien (C5/C6).
 - Cold Sweat mencatat error kompatibilitas thirst 3.0.0; versi 1.20.1 maksimum 1.4.0 → benign (lihat README).
