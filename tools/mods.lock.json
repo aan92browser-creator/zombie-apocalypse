@@ -342,6 +342,15 @@
         "side":  "client"
     },
     {
+        "slug":  "creativecore",
+        "versionId":  "ChKayKur",
+        "file":  "CreativeCore_FORGE_v2.12.40_mc1.20.1.jar",
+        "sha1":  "f8b65310e0183630dd00c1ade12f9b6ecd243287",
+        "sha512":  "c883749ebe3825694c9d7aad6f406ca6c30de70ca7621cbafb7ebbfaa54766db065b5abd66f42827abca19b25983b2884c425934f6d04d629dc9fa731fe9aa0c",
+        "url":  "https://cdn.modrinth.com/data/OsZiaDHq/versions/ChKayKur/CreativeCore_FORGE_v2.12.40_mc1.20.1.jar",
+        "side":  "client"
+    },
+    {
         "slug":  "pehkui",
         "versionId":  "SQpqSgAE",
         "file":  "Pehkui-3.8.2+1.20.1-forge.jar",

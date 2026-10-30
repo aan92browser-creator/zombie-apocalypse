@@ -37,6 +37,7 @@
   { "slug": "ambientsounds", "side": "client" },
   { "slug": "sound-physics-remastered", "side": "client" },
   { "slug": "enhancedvisuals", "side": "client" },
+  { "slug": "creativecore", "side": "client" },
   { "slug": "pehkui", "side": "both" },
   { "slug": "chunky", "side": "both" },
   { "slug": "ftb-quests-forge", "side": "both", "manual": true },
