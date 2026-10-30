@@ -2,6 +2,8 @@ server/
 dist/
 tools/java17/
 tools/vanilla_data/
+tools/jre17.zip
+tools/forge-installer.jar
 pack/overrides/mods/*.jar
 run/
 *.log
