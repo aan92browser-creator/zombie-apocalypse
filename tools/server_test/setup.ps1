@@ -62,4 +62,12 @@ Copy-Item -Path (Join-Path $root 'pack\overrides\config\openloader\data\zombie_a
 $questsDest = Join-Path $server 'config\ftbquests'
 New-Item -ItemType Directory -Force -Path $questsDest | Out-Null
 Copy-Item -Path (Join-Path $root 'pack\overrides\config\ftbquests\quests') -Destination $questsDest -Recurse -Force
+foreach ($d in @('coldsweat', 'thirst', 'zombieawareness')) {
+    $src = Join-Path $root "pack\overrides\config\$d"
+    if (Test-Path $src) {
+        $dest = Join-Path $server "config\$d"
+        New-Item -ItemType Directory -Force -Path $dest | Out-Null
+        Copy-Item -Path (Join-Path $src '*') -Destination $dest -Force
+    }
+}
 "setup done"

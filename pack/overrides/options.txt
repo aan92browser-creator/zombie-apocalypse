@@ -1,0 +1,6 @@
+version:3465
+renderDistance:8
+simulationDistance:8
+entityDistanceScaling:0.75
+graphicsMode:1
+maxFps:120
