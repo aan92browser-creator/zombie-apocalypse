@@ -36,9 +36,39 @@ if (-not (Test-Path $village)) {
     elseif ($vs.placement.type -ne 'minecraft:random_spread') { $errors += 'villages.json placement.type invalid' }
 }
 
+$lootDir = Join-Path $packRoot 'data\minecraft\loot_tables\chests'
+$manifestPath = Join-Path $root 'tools\loot_manifest.json'
+$lootCount = 0
+if (-not (Test-Path $manifestPath)) {
+    $errors += 'loot_manifest.json missing'
+} else {
+    $manifest = Get-Content $manifestPath -Raw | ConvertFrom-Json
+    $wantItems = @(
+        'minecraft:potion', 'minecraft:cooked_beef', 'tacz:ammo',
+        'minecraft:leather', 'minecraft:iron_ingot', 'tacz:modern_kinetic_gun'
+    )
+    $lootFiles = @(Get-ChildItem $lootDir -Filter '*.json' -ErrorAction SilentlyContinue)
+    if ($lootFiles.Count -ne 8) { $errors += "loot: $($lootFiles.Count) tables, want 8" }
+    foreach ($name in @($manifest.tables.PSObject.Properties.Name)) {
+        $m = $manifest.tables.$name
+        $path = Join-Path $lootDir "$name.json"
+        if (-not (Test-Path $path)) { $errors += "loot ${name}: missing output"; continue }
+        $t = Get-Content $path -Raw | ConvertFrom-Json
+        $pools = @($t.pools)
+        if ($pools.Count -ne [int]$m.output_pools) { $errors += "loot ${name}: $($pools.Count) pools, want $($m.output_pools)"; continue }
+        if ($pools.Count -ne [int]$m.original_pools + 1) { $errors += "loot ${name}: pool count not original+1" }
+        $ids = @($pools[-1].entries | ForEach-Object { $_.name })
+        foreach ($want in $wantItems) {
+            if ($ids -notcontains $want) { $errors += "loot ${name}: new pool missing $want" }
+        }
+        $lootCount++
+    }
+}
+
 if ($errors.Count -gt 0) {
     $errors | Select-Object -First 25
     "FAIL: $($errors.Count) problem(s)"
     exit 1
 }
 "ok: $($files.Count) biomes"
+"loot: $lootCount tables"
