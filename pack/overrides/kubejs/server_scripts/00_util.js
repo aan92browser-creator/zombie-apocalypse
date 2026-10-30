@@ -18,7 +18,7 @@ global.za = {
     mutantBase: 0.03,
     mutantStep: 0.004,
     mutantCap: 0.3,
-    roleDays: { armor: 3, weapon: 7, ender: 12, tools: 20, mutant: 30 },
+    roleDays: { armor: 3, weapon: 3, tools: 7, ender: 12, iron: 20, mutant: 30 },
     breakRate: 60,
     breakRateHorde: 30,
     chaseRadius: 8,
