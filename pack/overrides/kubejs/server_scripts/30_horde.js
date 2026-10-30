@@ -70,7 +70,7 @@ global.za.hordeTick = function (server) {
   const activeDay = pd.getInt('zaHordeDay')
 
   if (activeDay <= 0) {
-    if (global.za.isHordeDay(day) && tod >= 13000) {
+    if (global.za.isHordeDay(day) && tod >= 13000 && tod < global.za.cfg.hordeEndTick) {
       global.za.startHorde(level, global.za.hordeIndex(day))
     }
     return

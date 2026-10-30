@@ -39,5 +39,17 @@ ServerEvents.commandRegistry(event => {
           })
         )
       )
+      .then(
+        Commands.literal('setclock').then(
+          Commands.argument('day', Arguments.INTEGER.create(event)).then(
+            Commands.argument('tod', Arguments.INTEGER.create(event)).executes(ctx => {
+              const day = Arguments.INTEGER.getResult(ctx, 'day')
+              const tod = Arguments.INTEGER.getResult(ctx, 'tod')
+              ctx.source.server.runCommandSilent('time set ' + ((day - 1) * 24000 + tod))
+              return out(ctx, 'clock ' + day + ' ' + tod)
+            })
+          )
+        )
+      )
   )
 })
