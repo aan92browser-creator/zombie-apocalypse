@@ -1,0 +1,8 @@
+server/
+dist/
+tools/java17/
+tools/vanilla_data/
+pack/overrides/mods/*.jar
+run/
+*.log
+.superpowers/
