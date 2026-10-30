@@ -31,6 +31,6 @@ PlayerEvents.tick(event => {
   if (player.server.tickCount % 100 !== 0) return
   const dim = String(player.level.dimension)
   if (dim !== 'minecraft:the_nether' && dim !== 'minecraft:the_end') return
-  const spawn = player.server.overworld.sharedSpawnPos
+  const spawn = player.server.getOverworld().sharedSpawnPos
   player.teleportTo('minecraft:overworld', spawn.x + 0.5, spawn.y, spawn.z + 0.5, 0, 0)
 })
