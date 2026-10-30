@@ -5,6 +5,7 @@ tools/vanilla_data/
 tools/jre17.zip
 tools/forge-installer.jar
 pack/overrides/mods/*.jar
+pack/manual-mods/*.jar
 run/
 *.log
 .superpowers/

@@ -1,0 +1,143 @@
+{
+	id: "0A01000000000001"
+	group: ""
+	order_index: 0
+	filename: "hari_pertama"
+	title: "Hari Pertama"
+	icon: "minecraft:leather_chestplate"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B01000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Selamat Datang di Dunia Beku"
+			icon: "minecraft:leather_chestplate"
+			description: [
+				"Dunia ini dingin, sunyi, dan penuh zombie."
+				"Kit awal: armor kulit, pistol, 64 peluru, 8 steak, 4 botol air, 8 obor."
+				"Klik tanda centang setelah kamu memeriksa isi tas."
+			]
+			tasks: [
+				{
+					id: "0C01000000000001"
+					type: "checkmark"
+				}
+			]
+			rewards: [
+				{
+					id: "0D01000000000001"
+					type: "item"
+					item: "minecraft:torch"
+					count: 8
+				}
+			]
+		}
+		{
+			id: "0B01000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Bangun Tempat Berlindung"
+			icon: "minecraft:oak_door"
+			description: [
+				"Gali ruang kecil di lereng atau tutup celah dengan blok."
+				"Pastikan ada pintu dan tidak ada jalan masuk untuk zombie."
+			]
+			dependencies: [
+				"0B01000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0100000000000B"
+					type: "checkmark"
+				}
+			]
+			rewards: [
+				{
+					id: "0D0100000000000B"
+					type: "item"
+					item: "minecraft:cobblestone"
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B01000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Meja Kerajinan dan Furnace"
+			icon: "minecraft:crafting_table"
+			description: [
+				"Buat meja kerajinan dan furnace di dalam shelter."
+				"Kamu akan membutuhkannya untuk amunisi, air, dan armor wool."
+			]
+			dependencies: [
+				"0B01000000000002"
+			]
+			tasks: [
+				{
+					id: "0C01000000000015"
+					type: "checkmark"
+				}
+			]
+			rewards: [
+				{
+					id: "0D01000000000015"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 4
+				}
+				{
+					id: "0D01000000000016"
+					type: "item"
+					item: {
+						id: "minecraft:potion"
+						Count: 1b
+						tag: {
+							Potion: "minecraft:water"
+						}
+					}
+					count: 2
+				}
+			]
+		}
+		{
+			id: "0B01000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Tunggu Fajar Pertama"
+			icon: "minecraft:torch"
+			description: [
+				"Malam pertama hanya sedikit zombie, tetapi suhu turun drastis."
+				"Nyalakan obor dan jangan keluar sampai matahari terbit."
+			]
+			dependencies: [
+				"0B01000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0100000000001F"
+					type: "checkmark"
+				}
+			]
+			rewards: [
+				{
+					id: "0D0100000000001F"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 16
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Kenali kit dan bertahan sampai fajar"
+	]
+}

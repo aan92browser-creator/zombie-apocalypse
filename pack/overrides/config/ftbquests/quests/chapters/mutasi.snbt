@@ -1,0 +1,158 @@
+{
+	id: "0A07000000000001"
+	group: ""
+	order_index: 6
+	filename: "mutasi"
+	title: "Mutasi"
+	icon: "minecraft:ender_pearl"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B07000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Zombie Pembawa Ender Pearl"
+			icon: "minecraft:ender_pearl"
+			description: [
+				"Sebagian zombie membawa ender pearl dan berteleportasi."
+				"Bunuh mereka untuk mendapatkan pearl."
+			]
+			dependencies: [
+				"0B06000000000004"
+			]
+			tasks: [
+				{
+					id: "0C07000000000001"
+					type: "item"
+					item: "minecraft:ender_pearl"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D07000000000001"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B07000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Bunuh 20 Zombie di Overworld"
+			icon: "minecraft:iron_axe"
+			description: [
+				"Mutan berukuran besar dan memukul jauh lebih keras."
+				"Tetap di Overworld; Nether dan End terkunci."
+			]
+			dependencies: [
+				"0B07000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0700000000000B"
+					type: "dimension"
+					dimension: "minecraft:overworld"
+				}
+				{
+					id: "0C0700000000000C"
+					type: "kill"
+					entity: "minecraft:zombie"
+					value: 20
+				}
+			]
+			rewards: [
+				{
+					id: "0D0700000000000B"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B07000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Kumpulkan 4 Ender Pearl"
+			icon: "minecraft:ender_eye"
+			description: [
+				"Pearl dipakai untuk membuat ender eye dan waystone."
+				"Simpan di backpack, jangan di hotbar."
+			]
+			dependencies: [
+				"0B07000000000002"
+			]
+			tasks: [
+				{
+					id: "0C07000000000015"
+					type: "item"
+					item: "minecraft:ender_pearl"
+					count: 4
+				}
+			]
+			rewards: [
+				{
+					id: "0D07000000000015"
+					type: "item"
+					item: "minecraft:diamond"
+					count: 1
+				}
+			]
+		}
+		{
+			id: "0B07000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Horde Hari ke-30"
+			icon: "minecraft:nether_star"
+			description: [
+				"Horde pertama dengan mutant. Peluang mutant naik setiap hari."
+				"Bunuh 60 zombie dan bertahan sampai fajar."
+			]
+			dependencies: [
+				"0B07000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0700000000001F"
+					type: "kill"
+					entity: "minecraft:zombie"
+					value: 60
+				}
+			]
+			rewards: [
+				{
+					id: "0D0700000000001F"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 64
+				}
+				{
+					id: "0D07000000000020"
+					type: "item"
+					item: "minecraft:gold_ingot"
+					count: 4
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Mutan muncul sejak hari ke-30"
+	]
+}

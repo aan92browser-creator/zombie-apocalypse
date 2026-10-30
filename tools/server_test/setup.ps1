@@ -53,8 +53,13 @@ foreach ($e in $lock) {
         Copy-Item -Path (Join-Path $root "pack\overrides\mods\$($e.file)") -Destination $modsDest -Force
     }
 }
+Get-ChildItem -Path (Join-Path $root 'pack\manual-mods') -Filter '*.jar' -ErrorAction SilentlyContinue |
+    ForEach-Object { Copy-Item -Path $_.FullName -Destination $modsDest -Force }
 Copy-Item -Path (Join-Path $root 'pack\overrides\kubejs') -Destination (Join-Path $server 'kubejs') -Recurse -Force
 $dataDest = Join-Path $server 'config\openloader\data'
 New-Item -ItemType Directory -Force -Path $dataDest | Out-Null
 Copy-Item -Path (Join-Path $root 'pack\overrides\config\openloader\data\zombie_apocalypse') -Destination $dataDest -Recurse -Force
+$questsDest = Join-Path $server 'config\ftbquests'
+New-Item -ItemType Directory -Force -Path $questsDest | Out-Null
+Copy-Item -Path (Join-Path $root 'pack\overrides\config\ftbquests\quests') -Destination $questsDest -Recurse -Force
 "setup done"

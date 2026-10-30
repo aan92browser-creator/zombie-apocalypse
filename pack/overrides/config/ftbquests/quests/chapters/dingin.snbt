@@ -1,0 +1,172 @@
+{
+	id: "0A02000000000001"
+	group: ""
+	order_index: 1
+	filename: "dingin"
+	title: "Dingin"
+	icon: "minecraft:white_wool"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B02000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Kumpulkan Wool"
+			icon: "minecraft:white_wool"
+			description: [
+				"Cari domba di dataran bersalju."
+				"Wool adalah bahan utama insulasi armor."
+			]
+			dependencies: [
+				"0B01000000000004"
+			]
+			tasks: [
+				{
+					id: "0C02000000000001"
+					type: "item"
+					item: "minecraft:white_wool"
+					count: 4
+				}
+			]
+			rewards: [
+				{
+					id: "0D02000000000001"
+					type: "item"
+					item: "minecraft:leather"
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B02000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Jahit Armor Insulated"
+			icon: "kubejs:insulated_leather_chestplate"
+			description: [
+				"Resep: armor kulit + 2 wool (shapeless) untuk tiap bagian."
+				"Setiap bagian insulated menambah insulasi dingin 15%."
+				"Buat chestplate insulated terlebih dahulu."
+			]
+			dependencies: [
+				"0B02000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0200000000000B"
+					type: "item"
+					item: "kubejs:insulated_leather_chestplate"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D0200000000000B"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 8
+				}
+			]
+		}
+		{
+			id: "0B02000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Lengkapi Set Insulated"
+			icon: "kubejs:insulated_leather_leggings"
+			description: [
+				"Lengkapi helmet, leggings, dan boots insulated."
+				"Perhatikan meter suhu tubuhmu saat memakainya."
+			]
+			dependencies: [
+				"0B02000000000002"
+			]
+			tasks: [
+				{
+					id: "0C02000000000015"
+					type: "item"
+					item: "kubejs:insulated_leather_leggings"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D02000000000015"
+					type: "item"
+					item: "cold_sweat:thermometer"
+					count: 1
+				}
+			]
+		}
+		{
+			id: "0B02000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Nyalakan Api Unggun"
+			icon: "minecraft:campfire"
+			description: [
+				"Api unggun menghangatkan tubuh dan menerangi sekitar shelter."
+				"Letakkan di dalam ruang tertutup agar panasnya terasa."
+			]
+			dependencies: [
+				"0B02000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0200000000001F"
+					type: "item"
+					item: "minecraft:campfire"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D0200000000001F"
+					type: "item"
+					item: "minecraft:torch"
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B02000000000005"
+			x: 6.0
+			y: 0.0
+			title: "Persediaan Arang"
+			icon: "minecraft:charcoal"
+			description: [
+				"Bakar kayu di furnace untuk arang."
+				"Arang menjadi bahan bakar obor dan api unggun cadangan."
+			]
+			dependencies: [
+				"0B02000000000004"
+			]
+			tasks: [
+				{
+					id: "0C02000000000029"
+					type: "item"
+					item: "minecraft:charcoal"
+					count: 8
+				}
+			]
+			rewards: [
+				{
+					id: "0D02000000000029"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 4
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Wool menyelamatkan nyawa"
+	]
+}
