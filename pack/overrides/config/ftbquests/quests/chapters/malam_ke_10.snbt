@@ -1,0 +1,159 @@
+{
+	id: "0A05000000000001"
+	group: ""
+	order_index: 4
+	filename: "malam_ke_10"
+	title: "Malam ke-10"
+	icon: "minecraft:zombie_head"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B05000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Siapkan Persediaan"
+			icon: "minecraft:cooked_beef"
+			description: [
+				"Horde bisa berlangsung lama. Siapkan makanan dan air."
+				"Jangan habiskan semua amunisi sebelum horde tiba."
+			]
+			dependencies: [
+				"0B04000000000004"
+			]
+			tasks: [
+				{
+					id: "0C05000000000001"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 8
+				}
+			]
+			rewards: [
+				{
+					id: "0D05000000000001"
+					type: "item"
+					item: {
+						id: "minecraft:potion"
+						Count: 1b
+						tag: {
+							Potion: "minecraft:water"
+						}
+					}
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B05000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Kumpulkan Obor"
+			icon: "minecraft:torch"
+			description: [
+				"Terangi jalur keluar-masuk shelter."
+				"Zombie tetap datang, tetapi kamu bisa melihat mereka."
+			]
+			dependencies: [
+				"0B05000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0500000000000B"
+					type: "item"
+					item: "minecraft:torch"
+					count: 16
+				}
+			]
+			rewards: [
+				{
+					id: "0D0500000000000B"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 8
+				}
+			]
+		}
+		{
+			id: "0B05000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Perkuat Pintu"
+			icon: "minecraft:iron_ingot"
+			description: [
+				"Kumpulkan besi untuk pintu, jeruji, atau pelat."
+				"Pintu kayu tidak bertahan lama melawan horde."
+			]
+			dependencies: [
+				"0B05000000000002"
+			]
+			tasks: [
+				{
+					id: "0C05000000000015"
+					type: "item"
+					item: "minecraft:iron_ingot"
+					count: 4
+				}
+			]
+			rewards: [
+				{
+					id: "0D05000000000015"
+					type: "item"
+					item: "minecraft:stone_bricks"
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B05000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Bertahan dari Horde Hari ke-10"
+			icon: "minecraft:zombie_head"
+			description: [
+				"Horde menyerang saat malam hari ke-10. Tidur dikunci."
+				"Bunuh 25 zombie sampai fajar."
+			]
+			dependencies: [
+				"0B05000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0500000000001F"
+					type: "kill"
+					entity: "minecraft:zombie"
+					value: 25
+				}
+			]
+			rewards: [
+				{
+					id: "0D0500000000001F"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 32
+				}
+				{
+					id: "0D05000000000020"
+					type: "item"
+					item: "minecraft:iron_ingot"
+					count: 4
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Horde pertama datang"
+	]
+}

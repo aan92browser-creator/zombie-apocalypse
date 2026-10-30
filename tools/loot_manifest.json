@@ -1,0 +1,36 @@
+{
+  "tables": {
+    "simple_dungeon": {
+      "original_pools": 3,
+      "output_pools": 4
+    },
+    "abandoned_mineshaft": {
+      "original_pools": 3,
+      "output_pools": 4
+    },
+    "stronghold_library": {
+      "original_pools": 2,
+      "output_pools": 3
+    },
+    "stronghold_corridor": {
+      "original_pools": 2,
+      "output_pools": 3
+    },
+    "woodland_mansion": {
+      "original_pools": 4,
+      "output_pools": 5
+    },
+    "igloo_chest": {
+      "original_pools": 2,
+      "output_pools": 3
+    },
+    "shipwreck_treasure": {
+      "original_pools": 3,
+      "output_pools": 4
+    },
+    "pillager_outpost": {
+      "original_pools": 6,
+      "output_pools": 7
+    }
+  }
+}

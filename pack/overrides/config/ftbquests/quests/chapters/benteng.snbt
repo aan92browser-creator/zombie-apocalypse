@@ -1,0 +1,147 @@
+{
+	id: "0A06000000000001"
+	group: ""
+	order_index: 5
+	filename: "benteng"
+	title: "Benteng"
+	icon: "minecraft:stone_bricks"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B06000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Bangun Dinding Pertahanan"
+			icon: "minecraft:stone_bricks"
+			description: [
+				"Kelilingi shelter dengan dinding batu setinggi 3 blok."
+				"Sisakan satu pintu yang bisa kamu tutup."
+			]
+			dependencies: [
+				"0B05000000000004"
+			]
+			tasks: [
+				{
+					id: "0C06000000000001"
+					type: "item"
+					item: "minecraft:stone_bricks"
+					count: 32
+				}
+			]
+			rewards: [
+				{
+					id: "0D06000000000001"
+					type: "item"
+					item: "minecraft:cobblestone"
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B06000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Pasang Jebakan"
+			icon: "minecraft:oak_trapdoor"
+			description: [
+				"Trapdoor dan parit memperlambat zombie masuk."
+				"Kombinasikan dengan celah tembak di dinding."
+			]
+			dependencies: [
+				"0B06000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0600000000000B"
+					type: "item"
+					item: "minecraft:oak_trapdoor"
+					count: 8
+				}
+			]
+			rewards: [
+				{
+					id: "0D0600000000000B"
+					type: "item"
+					item: "minecraft:iron_ingot"
+					count: 2
+				}
+			]
+		}
+		{
+			id: "0B06000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Rakit Backpack"
+			icon: "sophisticatedbackpacks:backpack"
+			description: [
+				"Resep backpack: 5 leather + 2 wool + 2 string."
+				"Backpack menambah ruang loot saat eksplorasi."
+			]
+			dependencies: [
+				"0B06000000000002"
+			]
+			tasks: [
+				{
+					id: "0C06000000000015"
+					type: "item"
+					item: "sophisticatedbackpacks:backpack"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D06000000000015"
+					type: "item"
+					item: "minecraft:leather"
+					count: 8
+				}
+			]
+		}
+		{
+			id: "0B06000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Horde Kedua"
+			icon: "minecraft:shield"
+			description: [
+				"Horde hari ke-20 lebih besar dan zombie membawa kapak."
+				"Bunuh 40 zombie tanpa meninggalkan benteng."
+			]
+			dependencies: [
+				"0B06000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0600000000001F"
+					type: "kill"
+					entity: "minecraft:zombie"
+					value: 40
+				}
+			]
+			rewards: [
+				{
+					id: "0D0600000000001F"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 32
+				}
+				{
+					id: "0D06000000000020"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 8
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Bangun pertahanan permanen"
+	]
+}

@@ -1,0 +1,147 @@
+{
+	id: "0A03000000000001"
+	group: ""
+	order_index: 2
+	filename: "haus"
+	title: "Haus"
+	icon: "minecraft:potion"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B03000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Kumpulkan Salju"
+			icon: "minecraft:snowball"
+			description: [
+				"Salju bisa dicairkan menjadi air minum."
+				"Kumpulkan lebih banyak dari perkiraanmu."
+			]
+			dependencies: [
+				"0B02000000000005"
+			]
+			tasks: [
+				{
+					id: "0C03000000000001"
+					type: "item"
+					item: "minecraft:snowball"
+					count: 16
+				}
+			]
+			rewards: [
+				{
+					id: "0D03000000000001"
+					type: "item"
+					item: "minecraft:glass_bottle"
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B03000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Cairkan Air"
+			icon: "minecraft:glass_bottle"
+			description: [
+				"Resep: 4 snowball + 1 botol kaca menjadi 1 botol air."
+				"Simpan botol air untuk perjalanan jauh."
+			]
+			dependencies: [
+				"0B03000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0300000000000B"
+					type: "item"
+					item: "minecraft:glass_bottle"
+					count: 4
+				}
+			]
+			rewards: [
+				{
+					id: "0D0300000000000B"
+					type: "item"
+					item: {
+						id: "minecraft:potion"
+						Count: 1b
+						tag: {
+							Potion: "minecraft:water"
+						}
+					}
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B03000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Buat Mangkuk Air Bersih"
+			icon: "thirst:terracotta_water_bowl"
+			description: [
+				"Mangkuk tanah liat bisa diisi air dari sumber mana pun."
+				"Panggang mangkuk berisi air di campfire atau furnace agar bersih."
+			]
+			dependencies: [
+				"0B03000000000002"
+			]
+			tasks: [
+				{
+					id: "0C03000000000015"
+					type: "item"
+					item: "thirst:terracotta_water_bowl"
+					count: 2
+				}
+			]
+			rewards: [
+				{
+					id: "0D03000000000015"
+					type: "item"
+					item: "thirst:terracotta_bowl"
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B03000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Isi Waterskin"
+			icon: "cold_sweat:waterskin"
+			description: [
+				"Waterskin dibawa di badan dan tidak memakan slot hotbar."
+				"Isi penuh sebelum meninggalkan shelter."
+			]
+			dependencies: [
+				"0B03000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0300000000001F"
+					type: "item"
+					item: "cold_sweat:waterskin"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D0300000000001F"
+					type: "item"
+					item: {
+						id: "minecraft:potion"
+						Count: 1b
+						tag: {
+							Potion: "minecraft:water"
+						}
+					}
+					count: 4
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Air adalah nyawa kedua"
+	]
+}

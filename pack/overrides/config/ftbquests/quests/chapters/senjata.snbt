@@ -1,0 +1,153 @@
+{
+	id: "0A04000000000001"
+	group: ""
+	order_index: 3
+	filename: "senjata"
+	title: "Senjata"
+	icon: "tacz:modern_kinetic_gun"
+	default_quest_shape: "circle"
+	quests: [
+		{
+			id: "0B04000000000001"
+			x: 0.0
+			y: 0.0
+			title: "Temukan Senjata di Reruntuhan"
+			icon: "tacz:modern_kinetic_gun"
+			description: [
+				"Cari reruntuhan, kapal karam, atau dungeon."
+				"Peti berisi senjata sering dijaga zombie."
+			]
+			dependencies: [
+				"0B03000000000004"
+			]
+			tasks: [
+				{
+					id: "0C04000000000001"
+					type: "item"
+					item: "tacz:modern_kinetic_gun"
+					count: 1
+				}
+			]
+			rewards: [
+				{
+					id: "0D04000000000001"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 16
+				}
+			]
+		}
+		{
+			id: "0B04000000000002"
+			x: 1.5
+			y: 0.0
+			title: "Kumpulkan Bahan Peluru"
+			icon: "minecraft:gunpowder"
+			description: [
+				"Resep gunpowder: arang + flint + pasir."
+				"Bahan ini dipakai untuk membuat amunisi 9mm."
+			]
+			dependencies: [
+				"0B04000000000001"
+			]
+			tasks: [
+				{
+					id: "0C0400000000000B"
+					type: "item"
+					item: "minecraft:gunpowder"
+					count: 2
+				}
+			]
+			rewards: [
+				{
+					id: "0D0400000000000B"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 8
+				}
+			]
+		}
+		{
+			id: "0B04000000000003"
+			x: 3.0
+			y: 0.0
+			title: "Buat 32 Peluru"
+			icon: "tacz:ammo"
+			description: [
+				"Resep: 1 gunpowder + 1 iron nugget + 1 paper menjadi 8 peluru."
+				"Simpan amunisi di backpack agar tidak hilang saat mati."
+			]
+			dependencies: [
+				"0B04000000000002"
+			]
+			tasks: [
+				{
+					id: "0C04000000000015"
+					type: "item"
+					item: "tacz:ammo"
+					count: 32
+				}
+			]
+			rewards: [
+				{
+					id: "0D04000000000015"
+					type: "item"
+					item: "minecraft:cooked_beef"
+					count: 4
+				}
+			]
+		}
+		{
+			id: "0B04000000000004"
+			x: 4.5
+			y: 0.0
+			title: "Bersihkan Jalan"
+			icon: "minecraft:iron_sword"
+			description: [
+				"Zombie mulai memakai armor sejak hari ke-3."
+				"Aim ke kepala dan jaga jarak."
+			]
+			dependencies: [
+				"0B04000000000003"
+			]
+			tasks: [
+				{
+					id: "0C0400000000001F"
+					type: "kill"
+					entity: "minecraft:zombie"
+					value: 5
+				}
+			]
+			rewards: [
+				{
+					id: "0D0400000000001F"
+					type: "item"
+					item: {
+						id: "tacz:ammo"
+						Count: 1b
+						tag: {
+							AmmoId: "tacz:9mm"
+						}
+					}
+					count: 16
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+	subtitle: [
+		"Reruntuhan menyimpan senjata dan peluru"
+	]
+}

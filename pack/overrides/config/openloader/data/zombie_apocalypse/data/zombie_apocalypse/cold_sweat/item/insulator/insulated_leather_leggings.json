@@ -1,0 +1,32 @@
+{
+  "type": "armor",
+  "item": {
+    "items": [
+      "kubejs:insulated_leather_leggings"
+    ]
+  },
+  "entity": {
+    "entities": [
+      "*"
+    ],
+    "equipment": {
+      "legs": {
+        "items": [
+          "kubejs:insulated_leather_leggings"
+        ]
+      }
+    }
+  },
+  "attributes": {
+    "cold_sweat:cold_dampening": [
+      {
+        "name": "zombie_apocalypse:insulated_leather",
+        "amount": 0.15,
+        "operation": "addition"
+      }
+    ]
+  },
+  "hint": {
+    "key": "tooltip.zombie_apocalypse.insulated"
+  }
+}
