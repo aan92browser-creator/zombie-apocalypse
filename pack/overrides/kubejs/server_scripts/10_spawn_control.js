@@ -1,8 +1,11 @@
 // Kontrol spawn (hanya keluarga zombie), kunci Nether/End.
-// `event.type` adalah MobSpawnType (NATURAL/SPAWNER/...), bukan id entity, jadi
-// id selalu dibaca dari entity. Hewan pasif dibiarkan (wol untuk armor, makanan).
+// Id entity dibaca dari entity, bukan dari event.type. Hewan pasif dibiarkan
+// (wol untuk armor, makanan).
 
-EntityEvents.checkSpawn(event => {
+// Di Forge 47.3.0 event checkSpawn hanya terpicu dari spawner blok (KubeJS
+// memetakannya ke MobSpawnEvent.FinalizeSpawn), jadi spawn alami lolos.
+// spawned memakai EntityJoinLevelEvent sehingga menangkap semua jalur spawn.
+EntityEvents.spawned(event => {
   if (global.za.shouldCancelSpawn(event.entity.type)) {
     event.cancel()
   }
